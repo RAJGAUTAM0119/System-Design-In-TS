@@ -70,25 +70,48 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // arr.forEach((obj) => {
 // 	obj.draw()
 // })
-class Animal {
-    name;
-    constructor(name) {
-        this.name = name;
+// class Animal {
+// 	constructor(public name: string) { }
+// 	speak() {
+// 		console.log("Animal Speaks")
+// 	}
+// }
+// class Dog extends Animal {
+// 	constructor(name: string) {
+// 		super(name)
+// 	}
+// 	speak() {
+// 		super.speak()
+// 		console.log('Dog barks')
+// 	}
+// }
+// const dog = new Dog("Tommy")
+// console.log(dog.name)
+// dog.speak()
+class Book {
+    title;
+    author;
+    price;
+    constructor(title, author, price) {
+        this.title = title;
+        this.author = author;
+        this.price = price;
     }
-    speak() {
-        console.log("Animal Speaks");
+    displayInfo() {
+        return `The price of the book ${this.title} is $${this.price} and author of this book is ${this.author} `;
+    }
+    applyDiscount(percentage) {
+        if (percentage > 100) {
+            return "Invalid value";
+        }
+        const discountedPrice = this.price * (1 - percentage / 100);
+        return this.price = discountedPrice;
     }
 }
-class Dog extends Animal {
-    constructor(name) {
-        super(name);
-    }
-    speak() {
-        super.speak();
-        console.log('Dog barks');
-    }
-}
-const dog = new Dog("Tommy");
-console.log(dog.name);
-dog.speak();
+const book1 = new Book("The power of subcouncious mind", "Dr Joseph", 500);
+console.log(book1.applyDiscount(100));
+console.log(book1.displayInfo());
+const book2 = new Book("The green soul", "Raj Gautam", 1000);
+console.log(book2.applyDiscount(200));
+console.log(book2.displayInfo());
 //# sourceMappingURL=OOPs.js.map
