@@ -109,26 +109,120 @@
 // console.log(dog.name)
 // dog.speak()
 
-class Book {
-	constructor(public title: string, public author: string, public price: number) { }
+// class Book {
+// 	constructor(public title: string, public author: string, public price: number) { }
 
-	displayInfo(): string {
-		return `The price of the book ${this.title} is $${this.price} and author of this book is ${this.author} `
-	}
+// 	displayInfo(): string {
+// 		return `The price of the book ${this.title} is $${this.price} and author of this book is ${this.author} `
+// 	}
 
-	applyDiscount(percentage: number): number | string {
-		if (percentage > 100) {
-			return "Invalid value"
-		}
-		const discountedPrice = this.price * (1 - percentage / 100)
-		return this.price = discountedPrice
-	}
+// 	applyDiscount(percentage: number): number | string {
+// 		if (percentage > 100) {
+// 			return "Invalid value"
+// 		}
+// 		const discountedPrice = this.price * (1 - percentage / 100)
+// 		return this.price = discountedPrice
+// 	}
+// }
+
+// const book1 = new Book("The power of subcouncious mind", "Dr Joseph", 500)
+// console.log(book1.applyDiscount(100))
+// console.log(book1.displayInfo())
+
+// const book2 = new Book("The green soul", "Raj Gautam", 1000)
+// console.log(book2.applyDiscount(200))
+// console.log(book2.displayInfo())
+
+// Coding Challenge 1(Easy)
+
+// Create a Car class.
+
+// Fields:
+
+// brand
+// model
+// year
+// color
+
+// Requirements:
+
+// Use parameter properties
+// Add a displayInfo() method
+// Create 3 objects
+
+// class Car {
+// 	constructor(public brand: string, public model: string, public year: number, public color: string) { }
+
+// 	displayInfo(): string {
+// 		return `The brand of the car is ${this.brand} the model of the car is ${this.model} the build year of the car is ${this.year} and the color of the car is ${this.color}`
+// 	}
+// }
+
+// const car1 = new Car("BMW", "m-series", 2023, "Red")
+// const car2 = new Car("Lexus", "Model-l", 1990, "White")
+// const car3 = new Car("Toyota", "Fortunre", 2000, "Black")
+// console.log(car1.displayInfo())
+// console.log(car2)
+// console.log(car3)
+
+
+
+
+// Coding Challenge 2 (Medium)
+
+// Design a Student class.
+
+// Fields:
+
+// id
+// name
+// course
+// fees
+
+// Constructor requirements:
+
+// fees cannot be negative.
+// If it is negative, throw an error.
+
+// 	Example:
+
+// new Student(1, "Raj", "MERN", -500);
+
+// Should throw an error.
+
+// class Student {
+// 	constructor(public id: number, public name: string, public course: string, public fees: number) {
+// 		if (this.fees < 0) {
+// 			throw new Error("Fees cant be negative")
+// 		}
+// 	}
+
+// }
+
+// const student1 = new Student(12313, "Raj", "Ai and Ml", 200)
+// console.log(student1)
+
+
+
+// Coding Challenge 3(Thinking)
+
+// Imagine you're designing an Employee class.
+
+// Which fields belong in the constructor ?
+
+// 	name
+// email
+// employeeId
+// joiningDate
+// salary
+// lastLogin
+
+// Which are mandatory ?
+
+// 	Which should get default values ?
+
+// 		Explain why, not just your choice.
+
+class Employee {
+	constructor(public name: string, public email: string, public employeeId: string, public joiningDate: string) { }
 }
-
-const book1 = new Book("The power of subcouncious mind", "Dr Joseph", 500)
-console.log(book1.applyDiscount(100))
-console.log(book1.displayInfo())
-
-const book2 = new Book("The green soul", "Raj Gautam", 1000)
-console.log(book2.applyDiscount(200))
-console.log(book2.displayInfo())
