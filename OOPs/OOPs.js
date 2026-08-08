@@ -164,16 +164,111 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // Which are mandatory ?
 // 	Which should get default values ?
 // 		Explain why, not just your choice.
-class Employee {
+// class Employee {
+// 	constructor(public name: string, public email: string, public employeeId: string, public joiningDate: string) { }
+// }
+class Animal {
     name;
-    email;
-    employeeId;
-    joiningDate;
-    constructor(name, email, employeeId, joiningDate) {
+    constructor(name) {
         this.name = name;
-        this.email = email;
-        this.employeeId = employeeId;
-        this.joiningDate = joiningDate;
+    }
+    eat() {
+        return `${this.name} eats food`;
     }
 }
+class Dog extends Animal {
+    bark() {
+        return `${this.name} does woof`;
+    }
+}
+class Cat extends Animal {
+    meow() {
+        return `${this.name} does meow`;
+    }
+}
+const animals = [
+    new Dog("Bruno"),
+    new Cat("Milo"),
+    new Dog("Rocky")
+];
+for (const animal of animals) {
+    if (animal instanceof Dog) {
+        console.log(animal.bark());
+    }
+    if (animal instanceof Cat) {
+        console.log(animal.meow());
+    }
+}
+// interface PaymentMethod {
+// 	pay(amount: number, paymentMethod: string): void
+// }
+// class UPIPayment implements PaymentMethod {
+// 	// constructor(public amount: number, public paymentMethod: string) { }
+// 	pay(amount: number, paymentMethod: string): void {
+// 		console.log(`You have to pay ${amount} from ${paymentMethod}`)
+// 	}
+// }
+// class CardPayment implements PaymentMethod {
+// 	// constructor(public amount: number, public paymentMethod: string) { }
+// 	pay(amount: number, paymentMethod: string): void {
+// 		console.log(`You have to pay ${amount} from ${paymentMethod}`)
+// 	}
+// }
+// class CashPayment implements PaymentMethod {
+// 	// constructor(public amount: number, public paymentMethod: string) { }
+// 	pay(amount: number, paymentMethod: string): void {
+// 		console.log(`You have to pay ${amount} from ${paymentMethod}  `)
+// 	}
+// }
+// const payments: PaymentMethod[] = [
+// 	new UPIPayment(),
+// 	new CardPayment(),
+// 	new CashPayment()
+// ];
+// for (const payment of payments) {
+// 	if (payment instanceof UPIPayment) {
+// 		payment.pay(923234, "UPI")
+// 	}
+// 	if (payment instanceof CardPayment) {
+// 		payment.pay(2380324, "Card")
+// 	}
+// 	if (payment instanceof CashPayment) {
+// 		payment.pay(500234, "Cash")
+// 	}
+// }
+// interface IEmployee {
+// 	name: string,
+// 	work(): void
+// }
+// class Employee implements IEmployee {
+// 	constructor(public name: string) { }
+// 	work(): void {
+// 		console.log("Employee is working")
+// 	}
+// }
+// class Developer extends Employee {
+// 	constructor(public name: string) {
+// 		super(name)
+// 	}
+// 	override work(): void {
+// 		console.log("Developer is working")
+// 	}
+// }
+// class Manager extends Employee {
+// 	constructor(public name: string) {
+// 		super(name)
+// 	}
+// 	override work(): void {
+// 		super.work()
+// 		console.log('Manager is managing the team')
+// 	}
+// }
+// const employees = [
+// 	new Employee("Raj"),
+// 	new Developer("Raj Gautam"),
+// 	new Manager("Raj")
+// ]
+// for (let employee of employees) {
+// 	employee.work()
+// }
 //# sourceMappingURL=OOPs.js.map
