@@ -167,38 +167,35 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // class Employee {
 // 	constructor(public name: string, public email: string, public employeeId: string, public joiningDate: string) { }
 // }
-class Animal {
-    name;
-    constructor(name) {
-        this.name = name;
-    }
-    eat() {
-        return `${this.name} eats food`;
-    }
-}
-class Dog extends Animal {
-    bark() {
-        return `${this.name} does woof`;
-    }
-}
-class Cat extends Animal {
-    meow() {
-        return `${this.name} does meow`;
-    }
-}
-const animals = [
-    new Dog("Bruno"),
-    new Cat("Milo"),
-    new Dog("Rocky")
-];
-for (const animal of animals) {
-    if (animal instanceof Dog) {
-        console.log(animal.bark());
-    }
-    if (animal instanceof Cat) {
-        console.log(animal.meow());
-    }
-}
+// class Animal {
+// 	constructor(public name: string) { }
+// 	eat(): string {
+// 		return `${this.name} eats food`
+// 	}
+// }
+// class Dog extends Animal {
+// 	bark(): string {
+// 		return `${this.name} does woof`
+// 	}
+// }
+// class Cat extends Animal {
+// 	meow(): string {
+// 		return `${this.name} does meow`
+// 	}
+// }
+// const animals = [
+// 	new Dog("Bruno"),
+// 	new Cat("Milo"),
+// 	new Dog("Rocky")
+// ];
+// for (const animal of animals) {
+// 	if (animal instanceof Dog) {
+// 		console.log(animal.bark())
+// 	}
+// 	if (animal instanceof Cat) {
+// 		console.log(animal.meow())
+// 	}
+// }
 // interface PaymentMethod {
 // 	pay(amount: number, paymentMethod: string): void
 // }
@@ -271,4 +268,46 @@ for (const animal of animals) {
 // for (let employee of employees) {
 // 	employee.work()
 // }
+// class Animal {
+// 	protected name: string;
+// 	constructor(name: string) {
+// 		this.name = name;
+// 	}
+// }
+// class Dog extends Animal {
+// 	bark() {
+// 		console.log(this.name); // ✅
+// 	}
+// }
+// const dog = new Dog("Bruno")
+// console.log(dog)
+class BankAccount {
+    owner;
+    static totolAccounts = 0;
+    balance;
+    constructor(owner, balance) {
+        this.owner = owner;
+        this.balance = balance;
+        BankAccount.totolAccounts += 1;
+    }
+    getBalance() {
+        return this.balance;
+    }
+    deposit(amount) {
+        return this.balance += amount;
+    }
+    withdraw(amount) {
+        if (this.balance < amount) {
+            throw new Error("Insufficient Balance");
+        }
+        return this.balance -= amount;
+    }
+}
+const user1 = new BankAccount("Raj", 396);
+console.log(user1.withdraw(50));
+const user2 = new BankAccount("sayam", 295);
+console.log(user2.withdraw(50));
+const user3 = new BankAccount("sam", 49);
+console.log(user3.withdraw(49));
+console.log(`Total accounts are ${BankAccount.totolAccounts}`);
 //# sourceMappingURL=OOPs.js.map
