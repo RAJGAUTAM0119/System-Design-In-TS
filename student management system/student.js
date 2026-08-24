@@ -91,7 +91,10 @@ class StudentManagementSystem {
         return this.courses;
     }
     removeStudent(studentId) {
-        const student = this.students.find(data => data.getId() === studentId);
+        const student = this.students?.find(data => data.getId() === studentId);
+        if (!student) {
+            throw new Error("Student not found");
+        }
         if (!this.students.includes(student)) {
             throw new Error("The student is not found");
         }
@@ -100,7 +103,10 @@ class StudentManagementSystem {
         return this.students;
     }
     removeCourse(courseId) {
-        const course = this.courses.find(data => data.getId() === courseId);
+        const course = this.courses?.find(data => data.getId() === courseId);
+        if (!course) {
+            throw new Error("Course not found");
+        }
         const indexOfCourse = this.courses.indexOf(course);
         this.courses.splice(indexOfCourse, 1);
         return this.courses;
@@ -108,7 +114,13 @@ class StudentManagementSystem {
     enrollStudent(studentId, courseId) {
         const student = this.students.find(data => data.getId() === studentId);
         const course = this.courses.find(data => data.getId() === courseId);
-        student?.courses.push(course);
+        if (!student) {
+            throw new Error("Student not found");
+        }
+        if (!course) {
+            throw new Error("Course not found");
+        }
+        student.courses.push(course);
         return student;
     }
 }

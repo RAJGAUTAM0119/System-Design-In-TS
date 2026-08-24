@@ -9,7 +9,7 @@ interface IStudent {
 	name: string,
 	age: number,
 	email: string,
-	courses: ICourse[],
+	// courses: ICourse[],
 	getId(): number
 }
 
@@ -37,8 +37,8 @@ const course4 = new Course(92326, "Cyber security with ai", 100000, 1.2)
 const course5 = new Course(92327, "data analytics", 90000, 1)
 // console.log(course5)
 
-class Student {
-	constructor(private id: number, public name: string, public age: number, public email: string, public courses: ICourse[]) { }
+class Student implements IStudent {
+	constructor(private id: number, public name: string, public age: number, public email: string, private courses: ICourse[]) { }
 
 	enrollInCourse(course: ICourse) {
 		if (this.courses.includes(course)) {
@@ -107,10 +107,12 @@ class StudentManagementSystem {
 	}
 
 	removeStudent(studentId: number) {
-		const student: IStudent = this.students.find(
+		const student: IStudent = this.students?.find(
 			data => data.getId() === studentId
 		)
-
+		if (!student) {
+			throw new Error("Student not found")
+		}
 		if (!this.students.includes(student)) {
 			throw new Error("The student is not found")
 		}
@@ -121,10 +123,12 @@ class StudentManagementSystem {
 	}
 
 	removeCourse(courseId: number): ICourse[] {
-		const course: ICourse = this.courses.find(
+		const course: ICourse = this.courses?.find(
 			data => data.getId() === courseId
 		)
-
+		if (!course) {
+			throw new Error("Course not found")
+		}
 		const indexOfCourse = this.courses.indexOf(course)
 
 		this.courses.splice(indexOfCourse, 1)
@@ -140,7 +144,15 @@ class StudentManagementSystem {
 			data => data.getId() === courseId
 		)
 
-		student?.courses.push(course)
+		if (!student) {
+			throw new Error("Student not found")
+		}
+
+		if (!course) {
+			throw new Error("Course not found")
+		}
+
+		student.courses.push(course)
 
 		return student
 
