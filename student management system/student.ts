@@ -107,7 +107,7 @@ class StudentManagementSystem {
 	}
 
 	removeStudent(studentId: number) {
-		const student: IStudent = this.students?.find(
+		const student: IStudent | undefined = this.students?.find(
 			data => data.getId() === studentId
 		)
 		if (!student) {
@@ -123,7 +123,7 @@ class StudentManagementSystem {
 	}
 
 	removeCourse(courseId: number): ICourse[] {
-		const course: ICourse = this.courses?.find(
+		const course: ICourse | undefined = this.courses?.find(
 			data => data.getId() === courseId
 		)
 		if (!course) {
@@ -140,19 +140,19 @@ class StudentManagementSystem {
 			data => data.getId() === studentId
 		)
 
-		const course = this.courses.find(
-			data => data.getId() === courseId
-		)
-
 		if (!student) {
 			throw new Error("Student not found")
 		}
+
+		const course = this.courses.find(
+			data => data.getId() === courseId
+		)
 
 		if (!course) {
 			throw new Error("Course not found")
 		}
 
-		student.courses.push(course)
+		student.courses?.push(course)
 
 		return student
 

@@ -113,14 +113,14 @@ class StudentManagementSystem {
     }
     enrollStudent(studentId, courseId) {
         const student = this.students.find(data => data.getId() === studentId);
-        const course = this.courses.find(data => data.getId() === courseId);
         if (!student) {
             throw new Error("Student not found");
         }
+        const course = this.courses.find(data => data.getId() === courseId);
         if (!course) {
             throw new Error("Course not found");
         }
-        student.courses.push(course);
+        student.courses?.push(course);
         return student;
     }
 }
