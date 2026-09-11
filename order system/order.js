@@ -14,19 +14,23 @@ class Order {
     orderId;
     customer;
     items;
-    constructor(orderId, customer, items) {
+    constructor(orderId, customer, items = []) {
         this.orderId = orderId;
         this.customer = customer;
         this.items = items;
     }
-    addItems() {
-        return;
+    addItems(item) {
+        this.items.push(item);
+        return "Item added successfully!!!";
     }
-    removeItems() {
-        return;
+    removeItems(item) {
+        const index = this.items.indexOf(item);
+        if (index !== -1) {
+            this.items.splice(index, 1);
+        }
     }
     getTotal() {
-        return;
+        return this.items.reduce((total, item) => total + item.itemTotal(), 0);
     }
 }
 class OrderItem {
@@ -50,7 +54,12 @@ class Product {
         this.price = price;
     }
 }
-const product1 = new Product("Keyboard", 2015, 1250);
-const orderItem1 = new OrderItem(product1, 10);
-console.log(orderItem1.itemTotal());
+const raj = new Customer(101, "Raj Gauam", "rajgautam0119@@gmail.com");
+const keyboard = new Product("Mechanical Keyboard with RGB backlights", 102, 1200);
+const keyboardItem = new OrderItem(keyboard, 10);
+const keyboardOrder = new Order(2006, raj, [keyboardItem]);
+const mouse = new Product("Mouse", 2016, 800);
+const mouseItem = new OrderItem(mouse, 10);
+console.log(keyboardOrder.addItems(mouseItem));
+console.log(keyboardOrder.getTotal());
 //# sourceMappingURL=order.js.map

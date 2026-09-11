@@ -4,16 +4,21 @@ class Customer {
 
 
 class Order {
-  constructor(public orderId: number, public customer: string, public items: number) { }
+  constructor(public orderId: number, public customer: Customer, private items: OrderItem[] = []) { }
 
-  addItems() {
-    return
+  addItems(item: OrderItem): string {
+    this.items.push(item)
+    return "Item added successfully!!!"
   }
-  removeItems() {
-    return
+  removeItems(item: OrderItem): void {
+    const index = this.items.indexOf(item)
+
+    if (index !== -1) {
+      this.items.splice(index, 1)
+    }
   }
-  getTotal() {
-    return
+  getTotal(): number {
+    return this.items.reduce((total, item) => total + item.itemTotal(), 0)
   }
 }
 
@@ -31,8 +36,17 @@ class Product {
   constructor(public name: string, public id: number, public price: number) { }
 }
 
+const raj = new Customer(101, "Raj Gauam", "rajgautam0119@@gmail.com")
 
-const product1 = new Product("Keyboard", 2015, 1250)
+const keyboard = new Product("Mechanical Keyboard with RGB backlights", 102, 1200)
 
-const orderItem1 = new OrderItem(product1, 10)
-console.log(orderItem1.itemTotal())
+const keyboardItem = new OrderItem(keyboard, 10)
+
+const keyboardOrder = new Order(2006, raj, [keyboardItem])
+
+const mouse = new Product("Mouse", 2016, 800);
+
+const mouseItem = new OrderItem(mouse, 10);
+
+console.log(keyboardOrder.addItems(mouseItem))
+console.log(keyboardOrder.getTotal())

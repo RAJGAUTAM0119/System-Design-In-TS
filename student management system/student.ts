@@ -9,7 +9,7 @@ interface IStudent {
 	name: string,
 	age: number,
 	email: string,
-	// courses: ICourse[],
+	courses: ICourse[],
 	getId(): number
 }
 
@@ -38,7 +38,7 @@ const course5 = new Course(92327, "data analytics", 90000, 1)
 // console.log(course5)
 
 class Student implements IStudent {
-	constructor(private id: number, public name: string, public age: number, public email: string, private courses: ICourse[]) { }
+	constructor(private id: number, public name: string, public age: number, public email: string, public courses: ICourse[]) { }
 
 	enrollInCourse(course: ICourse) {
 		if (this.courses.includes(course)) {
