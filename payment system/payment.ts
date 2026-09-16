@@ -39,14 +39,17 @@ class PayPalPayment implements IPayment {
   }
 }
 
+function processPayment(payment: IPayment, amount: number): void {
+  payment.pay(amount)
+}
+
 const payments: IPayment[] = [
   new UpiPayment("rajhello@sbiindia"),
   new CardPayment(12345678, "10/12/1220", 432),
   new PayPalPayment("rajgautam@gmail.com")
 ]
 
-function processPayment(payment: IPayment, amount: number): void {
-  console.log(`Payment made with ${payment} of rupees ${amount}`)
-}
+for (let payment of payments) {
 
-processPayment(new UpiPayment("Rajgautam@gmail.com"), 500)
+  processPayment(payment, 500)
+}

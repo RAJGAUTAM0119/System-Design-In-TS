@@ -40,13 +40,15 @@ class PayPalPayment {
         console.log(`Payment refunded of Rupees ${amount} to ${this.email}`);
     }
 }
+function processPayment(payment, amount) {
+    payment.pay(amount);
+}
 const payments = [
     new UpiPayment("rajhello@sbiindia"),
     new CardPayment(12345678, "10/12/1220", 432),
     new PayPalPayment("rajgautam@gmail.com")
 ];
-function processPayment(payment, amount) {
-    console.log(`Payment made with ${payment} of rupees ${amount}`);
+for (let payment of payments) {
+    processPayment(payment, 500);
 }
-processPayment(new UpiPayment("Rajgautam@gmail.com"), 500);
 //# sourceMappingURL=payment.js.map
