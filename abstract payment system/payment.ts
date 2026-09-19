@@ -7,9 +7,9 @@ abstract class Payment {
     }
   }
 
-  abstract pay(amount: number): void
+  abstract pay(): void
 
-  abstract refund(amount: number): void
+  abstract refund(): void
 
 }
 
@@ -19,14 +19,14 @@ class UpiPayment extends Payment {
     super(transactionId, amount)
   }
 
-  pay(amount: number): void {
-    this.validateAmount(amount)
-    console.log(`UPI Payment of Rs ${amount}`)
+  pay(): void {
+    this.validateAmount(this.amount)
+    console.log(`UPI Payment of Rs ${this.amount}`)
   }
 
-  refund(amount: number): void {
-    this.validateAmount(amount)
-    console.log(`UPI Refund of Rs ${amount}`)
+  refund(): void {
+    this.validateAmount(this.amount)
+    console.log(`UPI Refund of Rs ${this.amount}`)
   }
 }
 
@@ -36,14 +36,14 @@ class CardPayment extends Payment {
     super(transactionId, amount)
   }
 
-  pay(amount: number): void {
-    this.validateAmount(amount)
-    console.log(`Card Payment of Rs ${amount}`)
+  pay(): void {
+    this.validateAmount(this.amount)
+    console.log(`Card Payment of Rs ${this.amount}`)
   }
 
-  refund(amount: number): void {
-    this.validateAmount(amount)
-    console.log(`Card Refund of Rs ${amount}`)
+  refund(): void {
+    this.validateAmount(this.amount)
+    console.log(`Card Refund of Rs ${this.amount}`)
   }
 }
 
@@ -53,24 +53,24 @@ class PayPalPayment extends Payment {
     super(transactionId, amount)
   }
 
-  pay(amount: number): void {
-    this.validateAmount(amount)
-    console.log(`Paypal Payment of Rs ${amount}`)
+  pay(): void {
+    this.validateAmount(this.amount)
+    console.log(`Paypal Payment of Rs ${this.amount}`)
   }
 
-  refund(amount: number): void {
-    this.validateAmount(amount)
-    console.log(`Paypal Refund of Rs ${amount}`)
+  refund(): void {
+    this.validateAmount(this.amount)
+    console.log(`Paypal Refund of Rs ${this.amount}`)
   }
 }
 
 const payments: Payment[] = [
-  new UpiPayment("rajgautam@paytm", "trx1234", 255),
-  new CardPayment(1111222233334444, 876, "20/03/2030", 340, 'trx9876'),
-  new PayPalPayment("rajgautam@gmail.com", 'trx1573', 4335)
+  new UpiPayment("rajgautam@paytm", "trx1234", 277),
+  new CardPayment(1111222233334444, 876, "20/03/2030", 355, 'trx9876'),
+  new PayPalPayment("rajgautam@gmail.com", 'trx1573', 23)
 ]
 
 for (let payment of payments) {
-  payment.pay(34)
-  payment.refund(43)
+  payment.pay()
+  payment.refund()
 }
